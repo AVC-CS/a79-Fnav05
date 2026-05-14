@@ -21,16 +21,33 @@ void printVector(vector<int>);
 void makeVector(vector<int> &number)
 {
     // TODO: fill the vector with random integers in [0, 20), then sort it.
+    for (int i = 0; i < number.size(); i++) {
+        number[i] = rand() % 21;
+    sort(number.begin(), number.end());
+    }
 }
 
 void insertVector(vector<int> &number, int usernum)
 {
     // TODO: insert usernum into the sorted vector while keeping it sorted.
+    auto it = number.begin();
+    while (it != number.end() && *it < usernum) {
+        it++;
+    number.insert(it, usernum);
+    }
 }
 
 int deleteVector(vector<int> &number, int usernum)
 {
     // TODO: erase EVERY occurrence of usernum from the vector.
+    int count = 0;
+    auto it = find(number.begin(), number.end(), usernum);
+    while (it != number.end()) {
+        number.erase(it);
+        count++;
+        it = find(number.begin(), number.end(), usernum);
+    }
+    return (count == 0) ? -1 : count;
 }
 
 int getInput(void)
