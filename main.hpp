@@ -21,6 +21,7 @@ void printVector(vector<int>);
 void makeVector(vector<int> &number)
 {
     // TODO: fill the vector with random integers in [0, 20), then sort it.
+    number.resize(10);
     for (int i = 0; i < number.size(); i++) {
         number[i] = rand() % 21;
     sort(number.begin(), number.end());
@@ -32,7 +33,7 @@ void insertVector(vector<int> &number, int usernum)
     // TODO: insert usernum into the sorted vector while keeping it sorted.
     auto it = number.begin();
     while (it != number.end() && *it < usernum) {
-        it++;
+        ++it;
     number.insert(it, usernum);
     }
 }
